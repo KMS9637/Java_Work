@@ -21,6 +21,20 @@ public class TodayLunchMenu {
 		System.out.println(" 오늘 점심 메뉴 : " + bibimbab.getFoodName());
 		System.out.println(" 오늘 점심 메뉴 가격 : " + bibimbab.getFoodPrice()+"원");
 		System.out.println(" 오늘 점심 장소 : "+bibimbab.getFoodPlace());
+		
+		// 전역 상수 및 전역 메서드 사용해보기. 클래스명 : KoreanFood
+		// 사용방법 : 클래스명.멤버 또는 클래스명.함수
+		String test = KoreanFood.showStaticMember();
+		System.out.println("test 변수에 담긴 내용 출력해보기 : "+test);
+		
+		// 변수를 사용할 때, 
+		// 1) 인스턴스 멤버: 객체를 생성해야 사용 가능
+		// 2) static 멤버: 클래스명으로 객체 생성 없이 바로 사용 가능함
+		
+		// Hello.java 파일 안에 있는 전역 함수 사용해보기.
+		// 같은 패키지(폴더)안에 있어서, 따로 임포트를 안해도 된다.
+		int result = Hello.sum(1000, 2000);
+		System.out.println("Hello의 클래스안에 함수 실행 결과 result : "+result);
+		
 	}
-
 }

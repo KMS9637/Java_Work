@@ -5,7 +5,6 @@ public class sportsData {
 		private String sportstype;
 		private String sportsSeason;
 		
-		
 		public String getSportsName() {
 			return sportsName;
 		}
@@ -25,14 +24,25 @@ public class sportsData {
 			this.sportsSeason = sportsSeason;
 		}
 		
+		public static final String COMMENT = "야구장 갑시다";
 		
-		public void name() {
-			System.out.println("야구ㅜㅜㅜㅜㅜㅜㅜㅜㅜ");
+		public static void showComment() {
+			System.out.println("코멘트 : " + COMMENT);
+			
 		}
-		public void sportsPlace() {
-			System.out.println("사직구장 ㄱㄱ");
+		
+		public sportsData(String sportsName, String sportstype, String sportsSeason) {
+			this.sportsName = sportsName;
+	        this.sportstype = sportstype;
+	        this.sportsSeason = sportsSeason;
 		}
-		public void sportsSeason(String season) {
-			System.out.println("언제부터 언제까지 : "+season);
+	
+		@Override
+		public String toString() {
+			return "sportsData [sportsName=" + sportsName + ", sportstype=" + sportstype + ", sportsSeason="
+					+ sportsSeason + "]";
 		}
+		
 }
+
+
