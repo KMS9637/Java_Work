@@ -7,6 +7,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -100,6 +105,40 @@ public class kms_java_project_main extends JFrame {
 		add(c, gbc);
 	}// gbAdd
 
+	 private boolean login(String email, String password) {
+	        String driver = "oracle.jdbc.driver.OracleDriver";
+	        String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 여기에 사용 중인 Oracle 서버의 호스트 및 포트를 지정해야 합니다.
+	        String userid = "scott"; // 여기에 Oracle 데이터베이스 사용자 계정을 입력하세요.
+	        String passwd = "tiger"; // 여기에 Oracle 데이터베이스 사용자 계정의 암호를 입력하세요.
+
+	        Connection con = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            Class.forName(driver);
+	            con = DriverManager.getConnection(url, userid, passwd);
+	            String query = "SELECT * FROM member_kms WHERE email=? AND password=?";
+	            pstmt = con.prepareStatement(query);
+	            pstmt.setString(1, email);
+	            pstmt.setString(2, password);
+	            rs = pstmt.executeQuery();
+
+	            return rs.next(); // 결과가 존재하면 로그인 성공
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return false;
+	        } finally {
+	            try {
+	                if (rs != null) rs.close();
+	                if (pstmt != null) pstmt.close();
+	                if (con != null) con.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {

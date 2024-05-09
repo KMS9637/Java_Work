@@ -66,7 +66,8 @@ public class kms_java_project_afterlogin extends JFrame {
 
     // 실제로는 데이터베이스나 다른 저장소에서 사용자 정보를 가져와야 합니다.
     private String getUserInfo() {
-        return "사용자 정보 출력"; // 여기서는 간단히 사용자 정보를 문자열로 반환합니다.
+    	MemberSelectDAO memberSelectDAO = new MemberSelectDAO();
+        return memberSelectDAO.selectMember();
     }
     private String getUserfavInfo() {
         return "사용자 취향 출력"; // 여기서는 간단히 사용자 정보를 문자열로 반환합니다.

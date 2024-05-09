@@ -118,6 +118,8 @@ public class kms_java_project_signUp extends JFrame {
                 } else if (!password.equals(repassword)) {
                     JOptionPane.showMessageDialog(null, "비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 확인해주세요!");
                 } else {
+                	MemberDAO memberDAO = new MemberDAO();
+                    memberDAO.insertMember(name, email, password);
                     JOptionPane.showMessageDialog(null, "회원가입 성공!");
                     dispose(); // 현재 창 닫기
                 }
